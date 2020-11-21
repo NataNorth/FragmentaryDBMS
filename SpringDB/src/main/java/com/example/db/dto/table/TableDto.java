@@ -17,17 +17,15 @@ public class TableDto {
     private List<ColumnDto> columns;
     private List<RowDto> rows;
 
-    @Deprecated
     public static TableDto fromEntity(Table table) {
         return TableDto.builder()
                 .name(table.getName())
-                .columns(ColumnDto.fromEntities(table.getColumns(),true))
-                .rows(RowDto.fromEntities(table.getRows(), true))
+                .columns(ColumnDto.fromEntities(table.getColumns()))
+                .rows(RowDto.fromEntities(table.getRows()))
                 .build();
     }
 
-    @Deprecated
-    public static List<TableDto> fromEntities(List<Table> tables, boolean old) {
+    public static List<TableDto> fromEntities(List<Table> tables) {
         return tables.stream()
                 .map(TableDto::fromEntity)
                 .collect(Collectors.toList());

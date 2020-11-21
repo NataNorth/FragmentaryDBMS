@@ -7,7 +7,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Deprecated
 public final class StorageHelper {
     public static final String storagePath = System.getProperty("user.dir") + "/storage/";
 

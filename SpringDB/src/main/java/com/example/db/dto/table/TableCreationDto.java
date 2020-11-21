@@ -16,26 +16,25 @@ public class TableCreationDto {
     private String name;
     private List<ColumnDto> columns;
 
-    @Deprecated
-    public static Table toEntity(TableCreationDto dto, boolean old) {
+    public static Table toEntity(TableCreationDto dto) {
         List<Column> columns = dto.getColumns()
                 .stream()
-                .map(columnDto -> ColumnDto.toEntity(columnDto, true))
+                .map(ColumnDto::toEntity)
                 .collect(Collectors.toList());
         return new Table(dto.getName(), columns);
     }
 
-    public static TableEntity toEntity(TableCreationDto dto, DatabaseEntity db) {
+    public static TableEntity toEntityPostgres(TableCreationDto dto, DatabaseEntity db) {
         TableEntity table = new TableEntity();
         table.setName(dto.getName());
-        table.setColumns(ColumnDto.toEntities(dto.getColumns(), table));
+        table.setColumns(ColumnDto.toEntitiesPostgres(dto.getColumns(), table));
         table.setDatabase(db);
         return table;
     }
 
-    public static List<TableEntity> toEntities(List<TableCreationDto> dtos, DatabaseEntity db) {
+    public static List<TableEntity> toEntitiesPostgres(List<TableCreationDto> dtos, DatabaseEntity db) {
         return dtos.stream()
-                .map(dto -> toEntity(dto, db))
+                .map(dto -> toEntityPostgres(dto, db))
                 .collect(Collectors.toList());
     }
 }

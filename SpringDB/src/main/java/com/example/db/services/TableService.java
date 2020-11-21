@@ -15,7 +15,6 @@ import java.io.IOException;
 import java.util.List;
 
 @Service
-@Deprecated
 public class TableService {
 
     private final MainDBService mainDBService;
@@ -26,7 +25,7 @@ public class TableService {
     }
 
     public TableDto create(TableCreationDto dto) throws NotOpenDatabaseException {
-        var table = mainDBService.createTable(dto.getName(), ColumnDto.toEntities(dto.getColumns(), true));
+        var table = mainDBService.createTable(dto.getName(), ColumnDto.toEntities(dto.getColumns()));
         return TableDto.fromEntity(table);
     }
 

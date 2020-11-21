@@ -16,22 +16,21 @@ public class DBDto {
     private String name;
     private List<TableDto> tables;
 
-    @Deprecated
     public static DBDto fromEntity(DataBase dataBase) {
         return DBDto.builder()
                 .name(dataBase.getName())
-                .tables(TableDto.fromEntities(new ArrayList<>(dataBase.getTables().values()), true))
+                .tables(TableDto.fromEntities(new ArrayList<>(dataBase.getTables().values())))
                 .build();
     }
 
-//    public static DBDto fromEntity(DatabaseEntity database) {
+//    public static DBDto fromEntityPostgres(DatabaseEntity database) {
 //        return DBDto.builder()
 //                .name(database.getName())
 //                .tables(TableDto.fromEntities(database.getTables()))
 //                .build();
 //    }
 
-//    public static List<DBDto> fromEntities(List<DatabaseEntity> databases) {
+//    public static List<DBDto> fromEntitiesPostgres(List<DatabaseEntity> databases) {
 //        return databases.stream()
 //                .map(DBDto::fromEntity)
 //                .collect(Collectors.toList());

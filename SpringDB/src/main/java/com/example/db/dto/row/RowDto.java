@@ -10,10 +10,9 @@ import java.util.stream.Collectors;
 @Data
 @AllArgsConstructor
 public class RowDto {
-    private List<String> row;
+    private List<String> cells;
 
-    @Deprecated
-    public static List<RowDto> fromEntities(List<List<String>> rows, boolean old) {
+    public static List<RowDto> fromEntities(List<List<String>> rows) {
         return rows.stream()
                 .map(RowDto::new)
                 .collect(Collectors.toList());
@@ -26,7 +25,7 @@ public class RowDto {
                 .collect(Collectors.toList()));
     }
 
-//    public static RowDto fromEntity(Row row) {
+//    public static RowDto fromEntityPostgres(Row row) {
 //        return new RowDto(
 //                row.getRow().stream()
 //                .map(BaseType::getData)
@@ -34,7 +33,7 @@ public class RowDto {
 //        );
 //    }
 
-//    public static List<RowDto> fromEntities(List<Row> rows) {
+//    public static List<RowDto> fromEntitiesPostgres(List<Row> rows) {
 //        return rows.stream()
 //                .map(RowDto::fromEntity)
 //                .collect(Collectors.toList());

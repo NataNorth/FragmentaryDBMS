@@ -4,6 +4,7 @@ import com.example.db.dto.column.ColumnDto;
 import com.example.db.dto.row.RowCreateDto;
 import com.example.db.dto.table.TableCreationDto;
 import com.example.db.dto.table.TableDto;
+import com.example.db.dto.table.TableSortDto;
 import com.example.db.exceptions.NotOpenDatabaseException;
 import com.example.db.services.RowService;
 import com.example.db.services.TableService;
@@ -12,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/table")
 public class TableController {
@@ -58,7 +60,7 @@ public class TableController {
         return tableService.getOne(name);
     }
 
-    @PutMapping("/{name}/sort")
+    @GetMapping("/{name}/sort")
     public TableDto getSorted(@PathVariable String name, @RequestParam(name = "column") String columnName) {
         return tableService.sortByColumn(name, columnName);
     }

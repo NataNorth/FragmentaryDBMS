@@ -15,10 +15,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 // only this service can be used to interact with database
-// this service has information about current db downloaded
+// this service has information about current downloaded db
 // TODO: make it remote interface for rmi
 @Service
-@Deprecated
 public class MainDBService {
     private DataBase currentDB;
 

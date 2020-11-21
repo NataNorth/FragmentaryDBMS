@@ -16,8 +16,7 @@ public class ColumnDto {
     private String name;
     private String type;
 
-    @Deprecated
-    public static Column toEntity(ColumnDto dto, boolean old) {
+    public static Column toEntity(ColumnDto dto) {
         return new Column(dto.getName(), Mapper.toType(dto.getType()));
     }
 
@@ -25,17 +24,15 @@ public class ColumnDto {
         return new ColumnDto(column.getName(), column.getType().toString());
     }
 
-    @Deprecated
-    public static List<ColumnDto> fromEntities(List<Column> columns, boolean old) {
+    public static List<ColumnDto> fromEntities(List<Column> columns) {
         return columns.stream()
                 .map(ColumnDto::fromEntity)
                 .collect(Collectors.toList());
     }
 
-    @Deprecated
-    public static List<Column> toEntities(List<ColumnDto> dtos, boolean old) {
+    public static List<Column> toEntities(List<ColumnDto> dtos) {
         return dtos.stream()
-                .map(columnDto -> toEntity(columnDto, true))
+                .map(ColumnDto::toEntity)
                 .collect(Collectors.toList());
     }
 
@@ -43,13 +40,13 @@ public class ColumnDto {
         return new ColumnDto(column.getName(), column.getType().toString());
     }
 
-    public static List<ColumnDto> fromEntities(List<ColumnEntity> columns) {
+    public static List<ColumnDto> fromEntitiesPostgres(List<ColumnEntity> columns) {
         return columns.stream()
                 .map(ColumnDto::fromEntity)
                 .collect(Collectors.toList());
     }
 
-    public static ColumnEntity toEntity(ColumnDto dto, TableEntity table) {
+    public static ColumnEntity toEntityPostgres(ColumnDto dto, TableEntity table) {
         ColumnEntity columnEntity = new ColumnEntity();
         columnEntity.setName(dto.getName());
         columnEntity.setName(dto.getType());
@@ -57,9 +54,9 @@ public class ColumnDto {
         return columnEntity;
     }
 
-    public static List<ColumnEntity> toEntities(List<ColumnDto> dtos, TableEntity table) {
+    public static List<ColumnEntity> toEntitiesPostgres(List<ColumnDto> dtos, TableEntity table) {
         return dtos.stream()
-                .map(column -> toEntity(column, table))
+                .map(column -> toEntityPostgres(column, table))
                 .collect(Collectors.toList());
     }
 

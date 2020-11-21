@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@Deprecated
 public class DBService {
 
     private final MainDBService mainDBService;
@@ -35,7 +34,7 @@ public class DBService {
         dbCreationDto.getTables()
                 .forEach(tableCreationDto ->
                         mainDBService.createTable(tableCreationDto.getName(),
-                                ColumnDto.toEntities(tableCreationDto.getColumns(), true)));
+                                ColumnDto.toEntities(tableCreationDto.getColumns())));
         return DBDto.fromEntity(db.get());
     }
 
