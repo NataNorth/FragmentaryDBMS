@@ -7,12 +7,13 @@ import com.example.db.entities.Table.TableEntity;
 import lombok.Builder;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Data
 @Builder
-public class TableDto {
+public class TableDto implements Serializable {
     private String name;
     private List<ColumnDto> columns;
     private List<RowDto> rows;
@@ -31,6 +32,9 @@ public class TableDto {
                 .collect(Collectors.toList());
     }
 
+    public String getName() {
+        return name;
+    }
 
 //    public static TableDto fromEntity(TableEntity table) {
 //        return TableDto.builder()
