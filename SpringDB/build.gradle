@@ -23,6 +23,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-hateoas'
     implementation('org.postgresql:postgresql')
     compileOnly 'org.projectlombok:lombok'
+//    compile group: 'org.springframework.hateoas', name: 'spring-hateoas', version: '0.18.0.RELEASE'
+    compile group: 'javax.servlet', name: 'jstl', version: '1.2'
+    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.35'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.3.4.RELEASE'
     compile group: 'com.graphql-java', name: 'graphql-spring-boot-starter', version: '5.0.2'
     compile group: 'com.graphql-java', name: 'graphql-java-tools', version: '5.2.4'
