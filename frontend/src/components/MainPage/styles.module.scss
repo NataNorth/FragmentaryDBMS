@@ -1,0 +1,60 @@
+$base-width: 400px;
+$info-margin: 30px;
+
+.contentContainer {
+    position: absolute;
+    top: 70px;
+    left: calc(50% - #{$base-width} - #{$info-margin * 2});
+    display: flex;
+    justify-content: space-between;
+}
+
+.infoContainer {
+    background-color: #f1f6f9;
+    height: max-content;
+    width: $base-width;
+    margin: $info-margin;
+    border-radius: 20px;
+    padding: 40px;
+    font-size: 30px;
+    line-height: 35px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.text {
+    height: 110px;
+}
+
+.buttonContainer {
+    margin-top: 15px;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+}
+
+.button {
+    background-color: white !important;
+    box-shadow: 0 0 2px rgba(0,0,0,0.5) !important;
+}
+
+.button:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,0.5) !important;
+}
+
+.listContainer {
+    height: 100%;
+    width: 20%;
+    padding: 15px;
+    background-color:  #9ba4b454;
+    position: fixed;
+    left: 0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.tableContainer {
+    margin-left: 45%;
+    padding-left: 40px;
+    position: fixed;
+    top: 100px;
+    left: 7%;
+}
